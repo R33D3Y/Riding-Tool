@@ -24,8 +24,6 @@ namespace Riding_Tool
             {
                 string [] cells = row.Split('\t');
 
-                Console.WriteLine(row);
-
                 Data_DataGridView.Rows.Add(cells[0], cells[1], cells[2], cells[3], cells[4], cells[5], cells[6]);
 
                 int seats = 0;
@@ -61,7 +59,7 @@ namespace Riding_Tool
             {
                 if (r.GetGroup().ToLower().Equals("beginner"))
                 {
-                    str = str + SallyPrintName(r);
+                    str = str + SallyPrintName(r, str);
                 }
             }
 
@@ -71,7 +69,7 @@ namespace Riding_Tool
             {
                 if (r.GetGroup().ToLower().Equals("improver"))
                 {
-                    str = str + SallyPrintName(r);
+                    str = str + SallyPrintName(r, str);
                 }
             }
 
@@ -81,7 +79,7 @@ namespace Riding_Tool
             {
                 if (r.GetGroup().ToLower().Equals("intermediate"))
                 {
-                    str = str + SallyPrintName(r);
+                    str = str + SallyPrintName(r, str);
                 }
             }
 
@@ -91,7 +89,7 @@ namespace Riding_Tool
             {
                 if (r.GetGroup().ToLower().Equals("advanced"))
                 {
-                    str = str + SallyPrintName(r);
+                    str = str + SallyPrintName(r, str);
                 }
             }
 
@@ -100,18 +98,23 @@ namespace Riding_Tool
             Clipboard.SetText(str);
         }
 
-        private string SallyPrintName(Rider r)
+        private string SallyPrintName(Rider r, string text)
         {
-            string str = "\t\t" + r.GetName();
-
-            if (!r.GetHorse().Equals(""))
+            if (!text.Contains(r.GetName()))
             {
-                str = str + " - " + r.GetHorse() + " please.";
+                string str = "\t\t" + r.GetName();
+
+                if (!r.GetHorse().Equals(""))
+                {
+                    str = str + " - " + r.GetHorse() + " please.";
+                }
+
+                str = str + "\n";
+
+                return str;
             }
 
-            str = str + "\n";
-
-            return str;
+            return "";
         }
 
         private void Button_Stable_Subject_Click(object sender, EventArgs e)

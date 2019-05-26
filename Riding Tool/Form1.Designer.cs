@@ -336,7 +336,7 @@
             this.Controls.Add(this.TextBox_Data_Input);
             this.Controls.Add(this.Data_DataGridView);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Riding Tool";
             ((System.ComponentModel.ISupportInitialize)(this.Data_DataGridView)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
